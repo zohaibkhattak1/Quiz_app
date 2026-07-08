@@ -1,12 +1,10 @@
+
 import 'package:flutter/material.dart';
 import 'category_screen.dart';
 
-
 class HomeScreen extends StatefulWidget {
-
   final VoidCallback changeTheme;
   final bool isDarkMode;
-
 
   const HomeScreen({
     super.key,
@@ -14,13 +12,10 @@ class HomeScreen extends StatefulWidget {
     required this.isDarkMode,
   });
 
-
   @override
   State<HomeScreen> createState() => _HomeScreenState();
 
 }
-
-
 
 class _HomeScreenState extends State<HomeScreen>
     with SingleTickerProviderStateMixin {
