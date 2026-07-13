@@ -28,18 +28,16 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
-  http: ^1.6.0
-  provider: ^6.1.5+1
   flutter:
     sdk: flutter
 
-  # The following adds the Cupertino Icons font to your application.
-  # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
-
-dev_dependencies:
-  flutter_test:
-    sdk: flutter
+  http: ^1.6.0
+  provider: ^6.1.5+1
+  file_picker: ^11.0.2
+  supabase_flutter: ^2.16.0
+  syncfusion_flutter_charts: 33.2.13
+  syncfusion_flutter_pdf: 33.2.13
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is

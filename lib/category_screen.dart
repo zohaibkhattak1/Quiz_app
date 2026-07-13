@@ -14,28 +14,43 @@ class CategoryScreen extends StatefulWidget {
 }
 
 class _CategoryScreenState extends State<CategoryScreen> {
-  int? selectedCategory;
+  String? selectedCategory;
 
   final List<Map<String, dynamic>> categories = [
-    {"name": "💻 Computers", "id": 18},
-    {"name": "📜 History", "id": 23},
-    {"name": "⚽ Sports", "id": 21},
-    {"name": "🧪 Science", "id": 17},
+    {
+      "name": "💙 Flutter",
+      "id": "flutter",
+    },
+    {
+      "name": "🎯 Dart",
+      "id": "dart",
+    },
+    {
+      "name": "🗄️ Supabase",
+      "id": "supabase",
+    },
+    {
+      "name": "🔥 Firebase",
+      "id": "firebase",
+    },
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
           title: const Text(
             "Select Category",
-            style: TextStyle(fontWeight: FontWeight.bold),
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+            ),
           ),
           centerTitle: true,
           backgroundColor: const Color(0xff6C5CE7),
+          foregroundColor: Colors.white,
         ),
         body: Container(
           width: double.infinity,
+          height: double.infinity,
           decoration: const BoxDecoration(
             gradient: LinearGradient(
               colors: [
@@ -74,44 +89,47 @@ class _CategoryScreenState extends State<CategoryScreen> {
           ),
 
           const SizedBox(height: 30),
+                  Expanded(
+                    child: ListView.builder(
+                      itemCount: categories.length,
+                      itemBuilder: (context, index) {
+                        final category = categories[index];
 
-          Expanded(
-            child: ListView.builder(
-              itemCount: categories.length,
-              itemBuilder: (context, index) {
-                final category = categories[index];
-
-                return Padding(
-                  padding: const EdgeInsets.only(bottom: 15),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor:
-                      selectedCategory == category["id"]
-                          ? Colors.green
-                          : const Color(0xff6C5CE7),
-                      foregroundColor: Colors.white,
-                      minimumSize: const Size(double.infinity, 65),
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(20),
-                      ),
-                    ),
-                    onPressed: () {
-                      setState(() {
-                        selectedCategory = category["id"];
-                      });
-                    },
-                    child: Text(
-                      category["name"],
-                      style: const TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.bold,
-                      ),
+                        return Padding(
+                          padding: const EdgeInsets.only(bottom: 15),
+                          child: ElevatedButton(
+                            onPressed: () {
+                              setState(() {
+                                selectedCategory = category["id"].toString();
+                              });
+                            },
+                            style: ElevatedButton.styleFrom(
+                              backgroundColor:
+                              selectedCategory == category["id"]
+                                  ? Colors.green
+                                  : const Color(0xff6C5CE7),
+                              foregroundColor: Colors.white,
+                              minimumSize: const Size(
+                                double.infinity,
+                                65,
+                              ),
+                              shape: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                            ),
+                            child: Text(
+                              category["name"].toString(),
+                              style: const TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
+                          ),
+                        );
+                      },
                     ),
                   ),
-                );
-              },
-            ),
-          ),
+
                   const SizedBox(height: 20),
 
                   Container(
@@ -139,7 +157,7 @@ class _CategoryScreenState extends State<CategoryScreen> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                            builder: (_) => QuizScreen(
+                            builder: (context) => QuizScreen(
                               difficulty: widget.difficulty,
                               category: selectedCategory!,
                             ),

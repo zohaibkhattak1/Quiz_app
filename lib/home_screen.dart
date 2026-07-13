@@ -1,6 +1,7 @@
 
 import 'package:flutter/material.dart';
 import 'category_screen.dart';
+import 'package:quiz_app/document_upload_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   final VoidCallback changeTheme;
@@ -304,6 +305,46 @@ class _HomeScreenState extends State<HomeScreen>
 
                         ),
 
+                      ),
+                      const SizedBox(height: 24),
+
+                      FadeTransition(
+                        opacity: fadeAnimation,
+                        child: SlideTransition(
+                          position: slideAnimation,
+                          child: SizedBox(
+                            width: double.infinity,
+                            height: 58,
+                            child: ElevatedButton.icon(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) => const DocumentUploadScreen(),
+                                  ),
+                                );
+                              },
+                              icon: const Icon(
+                                Icons.auto_awesome_rounded,
+                              ),
+                              label: const Text(
+                                "AI Document Quiz",
+                                style: TextStyle(
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              style: ElevatedButton.styleFrom(
+                                backgroundColor: const Color(0xff00B894),
+                                foregroundColor: Colors.white,
+                                elevation: 8,
+                                shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(25),
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
                       ),
 
 
